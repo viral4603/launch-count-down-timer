@@ -45,9 +45,9 @@
 
   .main-wrapper::after {
       content: '';
-      height: 238px;
+      height: 263px;
       background-image: url("../images/pattern-hills.svg");
-      background-size: contain;
+      background-size: cover;
       background-position: bottom;
       z-index: 21;
       bottom: 0;
