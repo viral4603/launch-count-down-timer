@@ -7,6 +7,7 @@
       --white: hsl(0, 0%, 100%);
       --semi-dark-blue: hsl(235, 16%, 14%);
       --dark-blue: hsl(234, 17%, 12%);
+      --bg-light: hsl(349, 85%, 3%);
   }
 
   * {
@@ -15,50 +16,26 @@
       box-sizing: border-box;
   }
 
-  html,
-  body {
-      height: 100%;
-      width: 100%;
-      font-size: 14px;
-  }
-
   body {
       font-family: 'Red Hat Text', sans-serif;
+      overflow: hidden;
+      position: relative;
+      background: url("../images/pattern-hills.svg") bottom no-repeat, url("../images/bg-stars.svg"), linear-gradient(var(--dark-blue), var(--semi-dark-blue) 40%, var(--bg-light) 100%);
+      background-size: contain;
+      font-size: 14px;
+      height: 100vh;
   }
 
   .main-wrapper {
-      height: 100%;
-      width: 100%;
-      background: var(--semi-dark-blue);
-      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 150px 0px;
   }
 
-  .main-wrapper::before {
-      content: url("../images/bg-stars.svg");
-      z-index: 11;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-  }
-
-  .main-wrapper::after {
-      content: '';
-      height: 263px;
-      background-image: url("../images/pattern-hills.svg");
-      background-size: cover;
-      background-position: bottom;
-      z-index: 99;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      position: absolute;
-  }
-
-  .main-wrapper .notify-text {
+  header .notify-text {
       text-align: center;
-      padding: 120px 0px;
+      padding-top: 200px;
       font-size: 1.6rem;
       color: var(--white);
       letter-spacing: 6px;
@@ -67,20 +44,16 @@
 
   /* count down container css */
   .main-wrapper .count-down-container {
-      max-width: 968px;
-      margin: auto;
       display: flex;
-      justify-content: space-between;
-      height: 60vh;
+      justify-content: center;
   }
 
   .main-wrapper .count-down-page-wrapper {
-      width: 20%;
-      text-align: center;
+      margin: 0px 20px;
   }
 
   .main-wrapper .count-down-card {
-      width: 160px;
+      width: 130px;
       text-align: center;
   }
 
@@ -93,8 +66,8 @@
       justify-content: center;
       font-size: 70px;
       color: var(--primary);
-      height: 160px;
-      width: 160px;
+      height: 130px;
+      width: 130px;
       background-color: var(--dark);
       border-radius: 12px;
       box-shadow: 0px 10px 0px var(--dark-blue);
@@ -131,7 +104,7 @@
   }
 
   .main-wrapper .details-title {
-      font-size: 74px;
+      font-size: 64px;
   }
 
   .main-wrapper .widget-title {
@@ -166,7 +139,23 @@
       text-align: center;
   }
 
-  .main-wrapper .social-icons {
+  footer {
+      width: 100%;
+      padding-top: 50px;
+      text-align: center;
+
+      .copy-write {
+        padding-top: 20px;
+          color: var(--white);
+      }
+
+      .copy-write-items {
+          color: var(--primary);
+      }
+
+  }
+
+  footer .social-icons {
       position: relative;
       z-index: 999;
       padding: 0px 20px;
@@ -176,13 +165,27 @@
       color: var(--secondary);
   }
 
-  .main-wrapper .social-icons:hover {
+  footer .social-icons:hover {
       color: var(--primary);
   }
 
+  @media (max-width: 991px) {
+      .main-wrapper .count-down-card {
+          width: 130px;
+      }
+
+      .main-wrapper .widget-card {
+          height: 130px;
+          width: 130px;
+      }
+  }
 
   /* // Small devices (landscape phones, 576px and up) */
   @media (max-width: 576px) {
+      body {
+          background-size: auto;
+      }
+
       .main-wrapper .count-down-container {
           width: 100%;
       }
@@ -193,11 +196,29 @@
       }
 
       .main-wrapper .details-title {
-          font-size: 1rem;
+          font-size: 2rem;
       }
 
-      .main-wrapper::after {
-          height: 100px;
+      .main-wrapper .count-down-card {
+          width: 70px;
       }
 
+      .main-wrapper .widget-card {
+          height: 70px;
+          width: 70px;
+          box-shadow: 0px 8px 0px var(--dark-blue);
+      }
+
+      .main-wrapper .widget-title {
+          margin-top: 1.25rem;
+          letter-spacing: 1px;
+          font-size: 0.85rem;
+      }
+
+  }
+
+  @media (max-width: 768px) {
+      .main-wrapper .count-down-page-wrapper {
+          margin: 0 10px;
+      }
   }
