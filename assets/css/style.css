@@ -3,11 +3,12 @@
   :root {
       --primary: hsl(345, 95%, 68%);
       --secondary: hsl(237, 18%, 59%);
-      --dark: hsl(236, 21%, 26%);
       --white: hsl(0, 0%, 100%);
+      --dark: hsl(236, 21%, 26%);
       --semi-dark-blue: hsl(235, 16%, 14%);
       --dark-blue: hsl(234, 17%, 12%);
       --bg-light: hsl(349, 85%, 3%);
+      --dark-gray: hsl(235, 16%, 14%)
   }
 
   * {
@@ -18,28 +19,34 @@
 
   body {
       font-family: 'Red Hat Text', sans-serif;
-      overflow: hidden;
+      /* overflow: hidden; */
       position: relative;
       background: url("../images/pattern-hills.svg") bottom no-repeat, url("../images/bg-stars.svg"), linear-gradient(var(--dark-blue), var(--semi-dark-blue) 40%, var(--bg-light) 100%);
       background-size: contain;
       font-size: 14px;
-      height: 100vh;
+  }
+
+  .main-section {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
   }
 
   .main-wrapper {
+      flex-grow: 1;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 150px 0px;
   }
 
   header .notify-text {
-      text-align: center;
-      padding-top: 200px;
+      margin-bottom: 100px;
       font-size: 1.6rem;
       color: var(--white);
       letter-spacing: 6px;
       font-weight: 500;
+      text-align: center;
   }
 
   /* count down container css */
@@ -53,7 +60,8 @@
   }
 
   .main-wrapper .count-down-card {
-      width: 130px;
+      width: 180px;
+      transform-origin: center center;
       text-align: center;
   }
 
@@ -66,8 +74,8 @@
       justify-content: center;
       font-size: 70px;
       color: var(--primary);
-      height: 130px;
-      width: 130px;
+      height: 180px;
+      width: 180px;
       background-color: var(--dark);
       border-radius: 12px;
       box-shadow: 0px 10px 0px var(--dark-blue);
@@ -91,20 +99,18 @@
       height: 50%;
       width: 100%;
       opacity: 0.2;
-      background-color: var(--secondary);
+      background-color: var(--dark-gray);
       z-index: 1;
       transform-origin: top center;
       transition: all 0.4s;
       transform: rotate(0deg);
   }
 
-  .widget-card:hover {
-      cursor: pointer;
-      transform: rotate(-180deg);
-  }
+
 
   .main-wrapper .details-title {
       font-size: 64px;
+      font-weight: bold;
   }
 
   .main-wrapper .widget-title {
@@ -117,7 +123,7 @@
   .main-wrapper .semi-circle {
       position: absolute;
       width: 20px;
-      z-index: 11;
+      z-index: 99999999;
       height: 10px;
       background-color: var(--dark-blue);
       border-radius: 10px 10px 0 0;
@@ -141,11 +147,12 @@
 
   footer {
       width: 100%;
-      padding-top: 50px;
       text-align: center;
+      padding-bottom: 30px;
+      padding-top: 100px;
 
       .copy-write {
-        padding-top: 20px;
+          padding-top: 20px;
           color: var(--white);
       }
 
@@ -215,10 +222,91 @@
           font-size: 0.85rem;
       }
 
+      footer .social-icons {
+          font-size: 1.5rem;
+      }
+
   }
 
   @media (max-width: 768px) {
       .main-wrapper .count-down-page-wrapper {
           margin: 0 10px;
+      }
+  }
+
+  /* animation css */
+  /* .animation-card {
+      position: relative;
+  } */
+
+  .animation-card .widget-card {
+      position: relative;
+  }
+
+  .widget-card .flip-card:nth-child(1) {
+      display: none;
+      font-size: 64px;
+      font-weight: bold;
+      position: absolute;
+      overflow: hidden;
+      width: 100%;
+      height: 50%;
+      top: 0;
+      background-color: var(--dark);
+      animation: flip-down-front 300ms ease-in both;
+      /* opacity: 0.; */
+      z-index: 99999;
+      /* animation: flip 5s; */
+      animation-iteration-count: 5;
+      transform-origin: bottom center;
+  }
+
+  .widget-card .flip-card:nth-child(1)::before {
+      content: attr(filp-front-data);
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 100%;
+
+  }
+
+  .widget-card .flip-card:nth-child(2) {
+      display: none;
+      font-size: 64px;
+      font-weight: bold;
+      position: absolute;
+      width: 100%;
+      height: 50%;
+      top: 50%;
+      z-index: 999999;
+      transform: rotateY(180deg);
+      background-color: var(--dark);
+      animation: flip-down-back 300ms ease-in both;
+      /* animation-iteration-count: 5; */
+  }
+
+  .widget-card .flip-card:nth-child(2)::before {
+      content: attr(filp-front-data);
+      position: absolute;
+      transform: translate(-50%, -50%) rotateZ(180deg);
+  }
+
+
+  @keyframes flip-down-front {
+      0% {
+          transform: rotateX(0deg);
+      }
+
+      100% {
+          transform: rotateX(-180deg);
+      }
+  }
+
+  @keyframes flip-down-back {
+      0% {
+          transform: rotateY(180deg) rotateX(0deg);
+      }
+
+      100% {
+          transform: rotateY(180deg) rotateX(180deg);
       }
   }
