@@ -176,69 +176,6 @@
       color: var(--primary);
   }
 
-  @media (max-width: 991px) {
-      .main-wrapper .count-down-card {
-          width: 130px;
-      }
-
-      .main-wrapper .widget-card {
-          height: 130px;
-          width: 130px;
-      }
-  }
-
-  /* // Small devices (landscape phones, 576px and up) */
-  @media (max-width: 576px) {
-      body {
-          background-size: auto;
-      }
-
-      .main-wrapper .count-down-container {
-          width: 100%;
-      }
-
-      .main-wrapper .widget-card {
-          height: 20px;
-          width: 20px;
-      }
-
-      .main-wrapper .details-title {
-          font-size: 2rem;
-      }
-
-      .main-wrapper .count-down-card {
-          width: 70px;
-      }
-
-      .main-wrapper .widget-card {
-          height: 70px;
-          width: 70px;
-          box-shadow: 0px 8px 0px var(--dark-blue);
-      }
-
-      .main-wrapper .widget-title {
-          margin-top: 1.25rem;
-          letter-spacing: 1px;
-          font-size: 0.85rem;
-      }
-
-      footer .social-icons {
-          font-size: 1.5rem;
-      }
-
-  }
-
-  @media (max-width: 768px) {
-      .main-wrapper .count-down-page-wrapper {
-          margin: 0 10px;
-      }
-  }
-
-  /* animation css */
-  /* .animation-card {
-      position: relative;
-  } */
-
   .animation-card .widget-card {
       position: relative;
   }
@@ -289,6 +226,76 @@
       position: absolute;
       transform: translate(-50%, -50%) rotateZ(180deg);
   }
+
+
+  @media (max-width: 991px) {
+      .main-wrapper .count-down-card {
+          width: 130px;
+      }
+
+      .main-wrapper .widget-card {
+          height: 130px;
+          width: 130px;
+      }
+  }
+
+  /* // Small devices (landscape phones, 576px and up) */
+  @media (max-width: 576px) {
+      body {
+          background-size: auto;
+      }
+
+      .main-wrapper .count-down-container {
+          width: 100%;
+      }
+
+      .main-wrapper .widget-card {
+          height: 20px;
+          width: 20px;
+      }
+
+      .main-wrapper .details-title {
+          font-size: 2rem;
+      }
+
+      .main-wrapper .count-down-card {
+          width: 70px;
+      }
+
+      .main-wrapper .widget-card {
+          height: 70px;
+          width: 70px;
+          box-shadow: 0px 8px 0px var(--dark-blue);
+      }
+
+      .main-wrapper .widget-title {
+          margin-top: 1.25rem;
+          letter-spacing: 1px;
+          font-size: 0.85rem;
+      }
+
+      footer .social-icons {
+          font-size: 1.5rem;
+      }
+
+      .widget-card .flip-card:nth-child(1) {
+          display: none;
+          font-size: 2rem;
+      }
+
+  }
+
+  @media (max-width: 768px) {
+      .main-wrapper .count-down-page-wrapper {
+          margin: 0 10px;
+      }
+  }
+
+  /* animation css */
+  /* .animation-card {
+      position: relative;
+  } */
+
 
 
   @keyframes flip-down-front {
