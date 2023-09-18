@@ -1,5 +1,5 @@
 // Set the date we're counting down to
-var countDownDate = new Date("Oct 30, 2023 15:37:25").getTime();
+var countDownDate = new Date("Nov 30, 2023 15:37:25").getTime();
 
 const x = setInterval(() => {
     if (x) {
@@ -21,20 +21,35 @@ const x = setInterval(() => {
 
 function updateElement(className, content) {
     content = getDigit(content)
+    const cardElement = document.querySelector(`.widget-card.${className}`)
+    const titleElement  = document.querySelector(`.widget-card.${className} .details-title`)
 
-    const mainElement = document.querySelector(`.widget-card.${className}`)
-    const recentValue = mainElement.childNodes[1].getAttribute('filp-front-data')
+    const attributeData = cardElement.getAttribute('data-num')
+    const flipElement = document.querySelectorAll(`.widget-card.${className} .flip-card`)
 
-    if (recentValue != content) {
-        mainElement.childNodes[1].setAttribute('filp-front-data', content)
-        mainElement.childNodes[1].style.display = 'block'
-
-        setTimeout(function () {
-            mainElement.childNodes[1].style.display = 'none'
-        }, 350);
+    if(attributeData === null) {
+        cardElement.setAttribute('data-num', content)
+        titleElement .textContent = content;
     }
 
-    mainElement.childNodes[5].innerHTML = content
+    if (attributeData != content) {
+        cardElement.setAttribute('data-num', content)
+        cardElement.childNodes[3].setAttribute('filp-front-data', attributeData)
+        cardElement.childNodes[5].setAttribute('filp-front-data', attributeData)
+        cardElement.childNodes[7].setAttribute('filp-front-data', attributeData)
+        
+        flipElement.forEach(item => {
+            item.style.display = 'block'
+        })
+        setTimeout(() => {
+            titleElement .textContent = content;
+            cardElement.setAttribute('data-num', content)
+            flipElement.forEach(item => {
+                item.style.display = 'none'
+            })
+        }, 350)
+
+    }
 }
 
 /**
